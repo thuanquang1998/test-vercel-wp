@@ -17,7 +17,7 @@ const MoreNews2 = ({ posts }) => {
     <div class="container my-24 mx-auto md:px-6">
       <section class="mb-32 text-center md:text-left">
         {posts.map(({ node }) => {
-          return <Card data={node} />;
+          return <Card key={`${JSON.stringify(node)}`} data={node} />;
         })}
       </section>
     </div>
@@ -35,7 +35,7 @@ const Card = ({ data }) => {
         >
           {data?.slug && (
             <Link
-              href={`/posts/${data?.slug}`}
+              href={`/${data?.slug}`}
               aria-label={data?.title}
               class="w-full"
               alt={data?.title}

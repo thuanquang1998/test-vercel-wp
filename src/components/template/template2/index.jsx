@@ -19,9 +19,9 @@ const MoreNews2 = ({ posts }) => {
         <h2 class="mb-12 text-center text-3xl font-bold">Newest articles</h2>
         {posts.map(({ node }, index) => {
           if (index % 2 === 0) {
-            return <CardLeft data={node} />;
+            return <CardLeft key={`${JSON.stringify(node)}`} data={node} />;
           }
-          return <CardRight data={node} />;
+          return <CardRight key={`${JSON.stringify(node)}`} data={node} />;
         })}
       </section>
     </div>
@@ -39,7 +39,7 @@ const CardLeft = ({ data }) => {
         >
           {data?.slug && (
             <Link
-              href={`/posts/${data?.slug}`}
+              href={`/${data?.slug}`}
               aria-label={data?.title}
               class="w-full"
               alt={data?.title}
@@ -79,7 +79,7 @@ const CardRight = ({ data }) => {
         >
           {data?.slug && (
             <Link
-              href={`/posts/${data?.slug}`}
+              href={`/${data?.slug}`}
               aria-label={data?.title}
               class="w-full"
               alt={data?.title}

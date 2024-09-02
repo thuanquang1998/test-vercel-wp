@@ -22,7 +22,7 @@ const Template = ({ edges }) => {
           <div class="inline-grid grid-cols-2 gap-4 w-full">
             {headerPosts.map(({ node }) => {
               return (
-                <div class="h-60">
+                <div key={`${JSON.stringify(node)}`} class="h-60">
                   <Card data={node} />
                 </div>
               );
@@ -48,7 +48,7 @@ const MoreNews = ({ posts }) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-32">
         {posts.map(({ node }) => {
           return (
-            <div class="h-60">
+            <div key={`${JSON.stringify(node)}`} class="h-60">
               <Card data={node} />
             </div>
           );
@@ -81,7 +81,7 @@ const Card = ({ data }) => {
         }}
       >
         {data?.slug ? (
-          <Link href={`/posts/${data?.slug}`} aria-label={data?.title}>
+          <Link href={`/${data?.slug}`} aria-label={data?.title}>
             {image}
           </Link>
         ) : (

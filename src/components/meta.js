@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
-import Script from "next/script";
 
 export default function Meta() {
   const mgidSiteId = process?.env?.MGID_SITE_ID;
@@ -39,17 +38,6 @@ export default function Meta() {
         name="description"
         content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
       />
-      {/* <meta property="og:image" content={HOME_OG_IMAGE_URL} /> */}
-
-      {mgidSiteId &&
-        (<script src={`https://jsc.mgid.com/site/${mgidSiteId}.js`} async></script>)
-      }
-      {adskeeperSiteId &&
-        (<script src={`https://jsc.adskeeper.com/site/${adskeeperSiteId}.js`} async></script>)
-      }
-      <Script id="custom-script" strategy="afterInteractive">
-          {`(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");`}
-        </Script>
     </Head>
   )
 }

@@ -6,7 +6,6 @@ import Container from "@/components/container";
 import Layout from "@/components/layout";
 import PostBody from "@/components/post-body";
 import PostHeader from "@/components/post-header";
-import PostTitle from "@/components/post-title";
 import SectionSeparator from "@/components/section-separator";
 import { getPostAndMorePosts } from "@/lib/api";
 import Script from "next/script";
@@ -70,15 +69,11 @@ export default async function Post({ params }) {
             <meta property="og:image" content={post.featuredImage?.node?.sourceUrl} />
 
             {process.env.MGID_SITE_ID && (
-              <script src={`https://jsc.mgid.com/site/${process.env.MGID_SITE_ID}.js`}></script>
+              <script src={`https://jsc.mgid.com/site/${process.env.MGID_SITE_ID}.js`} async></script>
             )}
             {process.env.ADSKEEPER_SITE_ID && (
-              <script src={`https://jsc.adskeeper.com/site/${process.env.ADSKEEPER_SITE_ID}.js`}></script>
+              <script src={`https://jsc.adskeeper.com/site/${process.env.ADSKEEPER_SITE_ID}.js`} async></script>
             )}
-
-            <Script id="custom-script" strategy="afterInteractive">
-              {`(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");`}
-            </Script>
           </Head>
 
           <div className="block-columns">
