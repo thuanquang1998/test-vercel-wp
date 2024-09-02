@@ -60,6 +60,9 @@ export default async function Post({ params }) {
     }
   });
 
+  const mgidSiteId = process?.env?.MGID_SITE_ID;
+  const adskeeperSiteId = process?.env?.ADSKEEPER_SITE_ID;
+
   return (
     <Layout preview={false}>
       <Container>
@@ -75,6 +78,19 @@ export default async function Post({ params }) {
               <script src={`https://jsc.adskeeper.com/site/${process.env.ADSKEEPER_SITE_ID}.js`} async></script>
             )}
           </Head>
+
+          {mgidSiteId && (
+            <Script
+              src={`https://jsc.mgid.com/site/${mgidSiteId}.js`}
+              strategy="lazyOnload"
+            />
+          )}
+          {adskeeperSiteId && (
+            <Script
+              src={`https://jsc.adskeeper.com/site/${adskeeperSiteId}.js`}
+              strategy="lazyOnload"
+            />
+          )}
 
           <Script id="custom_mgid_script" strategy="beforeInteractive">
             {`(function(w,q){w[q] = w[q] || [];w[q].push(["_mgc.load"])})(window,"_mgq");`}
