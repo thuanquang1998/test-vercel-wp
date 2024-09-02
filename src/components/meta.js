@@ -38,6 +38,12 @@ export default function Meta() {
         name="description"
         content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
       />
+       {mgidSiteId && (
+          <script src={`https://jsc.mgid.com/site/${mgidSiteId}.js`} async />
+        )}
+        {adskeeperSiteId && (
+          <script src={`https://jsc.adskeeper.com/site/${adskeeperSiteId}.js`} async />
+        )}
     </Head>
   )
 }

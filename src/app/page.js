@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { CMS_NAME } from "@/lib/constants";
+import Script from "next/script";
 import Layout from "@/components/layout";
 import { getAllPostsForHome } from "@/lib/api";
 import Template0 from "@/components/template/template0";
@@ -30,6 +30,18 @@ export default async function Home() {
           <script src={`https://jsc.adskeeper.com/site/${adskeeperSiteId}.js`} async />
         )}
       </Head>
+      {mgidSiteId && (
+        <Script
+          src={`https://jsc.mgid.com/site/${mgidSiteId}.js`}
+          strategy="lazyOnload"
+        />
+      )}
+      {adskeeperSiteId && (
+        <Script
+          src={`https://jsc.adskeeper.com/site/${adskeeperSiteId}.js`}
+          strategy="lazyOnload"
+        />
+      )}
       <Template edges={edges} />
     </Layout>
   );

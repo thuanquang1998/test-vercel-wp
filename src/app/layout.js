@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -9,8 +9,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const mgidSiteId = process?.env?.MGID_SITE_ID;
+  const adskeeperSiteId = process?.env?.ADSKEEPER_SITE_ID;
   return (
     <html lang="en">
+      <Head>
+        <title>{process?.env?.CMS_NAME}</title>
+        {mgidSiteId && (
+          <script src={`https://jsc.mgid.com/site/${mgidSiteId}.js`} async />
+        )}
+        {adskeeperSiteId && (
+          <script src={`https://jsc.adskeeper.com/site/${adskeeperSiteId}.js`} async />
+        )}
+      </Head>
       <body className={inter.className}>{children}</body>
     </html>
   );
