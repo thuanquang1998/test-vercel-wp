@@ -76,6 +76,10 @@ export default async function Post({ params }) {
             )}
           </Head>
 
+          <Script id="custom_mgid_script" strategy="beforeInteractive">
+            {`(function(w,q){w[q] = w[q] || [];w[q].push(["_mgc.load"])})(window,"_mgq");`}
+          </Script>
+                  
           <div className="block-columns">
             <div
               className="block-column"
